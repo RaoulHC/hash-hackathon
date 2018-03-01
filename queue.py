@@ -30,6 +30,7 @@ class RideQueue(object):
         # Start with the first ride in the queue as a trial solution.
         best_distance = self.distance(self.ride_queue[0],x,y)
         current_ride = 0
+        print "CAR ",car_id," ASKED FOR NEW RIDE FROM QUEUE OF SIZE"
 
         #
         for i in xrange(len(self.ride_queue)):
@@ -48,11 +49,15 @@ class RideQueue(object):
 
         # copy the ride for return
         return_ride =  deepcopy(self.ride_queue[current_ride])
+        print "CAR ",car_id," ASSIGNING RIDE: ", return_ride
 
         # remove ride from list
         del self.ride_queue[current_ride]
+        print "RIDE QUEUE NOW: ", len(self.ride_queue)
+
+
         return return_ride
 
     def ride_empty(self):
-        if not self.ride_queue:
-            return False
+        return len(self.ride_queue) == 0
+
