@@ -28,19 +28,19 @@ class Car(object):
         if self.finish is True:
             return
 
-        # check if ride
-        elif self.ride is not None:
-            self.ride_step()
-            return
-
         # find ride
         if Car.ride_queue.ride_empty():
             self.finished = True
             return
 
         self.ride = Car.ride_queue.give_ride(self.pos[0], self.pos[1], self.id)
+        self.time_remaining = self.ride.distance2start(self.pos)
         if self.ride is None:
             self.is_moving = False
+
+        # check if ride
+        if self.ride is not None:
+            self.ride_step()
 
     def ride_step(self):
         # if not got ride count down time remaining to pick up
