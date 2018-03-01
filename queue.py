@@ -29,9 +29,9 @@ class RideQueue(object):
         """
 
         # Delete expired rides
-        for x in xrange(len(self.ride_queue)):
+        for x in sorted(xrange(len(self.ride_queue)), reverse=True):
             if self.ride_queue[x].latest_step < Car.time:
-                self.ride_queue.remove(self.ride_queue[x])
+                del self.ride_queue[x]
 
         # Start with the first ride in the queue as a trial solution.
         best_distance = self.distance(self.ride_queue[0],x,y)
