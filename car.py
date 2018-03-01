@@ -13,6 +13,9 @@ class Car(object):
     def initialise_ride_queue(cls, queue):
         cls.ride_queue = queue
 
+    def get_ride_queue(self):
+        return Car.ride_queue
+
     def step(self):
         if Car.ride_queue == []:
             self.finish = True
