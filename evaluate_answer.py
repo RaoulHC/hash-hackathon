@@ -1,4 +1,5 @@
 from simulation_manager import SimulationManager
+from car import Car
 
 in_file = 'in/a_example.in'
 simulation = SimulationManager(in_file)
@@ -9,6 +10,7 @@ for ride in simulation.rides:
 
 # Run the simulation
 for t in xrange(simulation.T):
+    Car.time = t
     for car in simulation.cars:
         car.step()
 
