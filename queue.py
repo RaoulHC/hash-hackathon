@@ -1,8 +1,9 @@
+from copy import deepcopy
 # queue class file
 
-class queue(object, ride_list, car_list):
+class queue(object):
 
-    def __init__(self):
+    def __init__(self, ride_list, car_list):
         self.ride_queue = ride_list
         self.ride_map = {}
 
@@ -14,14 +15,20 @@ class queue(object, ride_list, car_list):
             if dist < res:
                 res = dist
                 current_ride = i
-        return ride_queue[current_ride]
+
+        # copy the ride for return
+        return_ride =  deepcopy(ride_queue[current_ride])
+
+        # remove ride from list
+        del ride_queue[current_ride]
+        return return_ride
 
 
-is ride empty
+# is ride empty
 
-    def output
+#     def output
 
 
-    def step(self):
-        if ride_queue == []:
-            self.finish = True
+#     def step(self):
+#         if ride_queue == []:
+#             self.finish = True

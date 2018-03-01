@@ -22,7 +22,7 @@ class SimulationManager:
 
         # Now read in the rides
         self.rides = []
-        for line in lines[1:]:
+        for r_id,line in enumerate(lines[1:]):
             nums = [int(s) for s in line.split(' ')]
 
             start_x,start_y = nums[0],nums[1]
@@ -34,7 +34,8 @@ class SimulationManager:
                 Ride( [start_x,start_y],
                      [end_x,end_y],
                     earlist_start,
-                    earlist_end
+                    earlist_end,
+                    r_id
                     )
                 )
 
