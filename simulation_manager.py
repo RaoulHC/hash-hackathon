@@ -1,5 +1,6 @@
 from ride import Ride
 from car import Car
+from queue import RideQueue
 
 class SimulationManager:
     def __init__(
@@ -45,15 +46,19 @@ class SimulationManager:
         self.cars = []
         for i in xrange(self.n_cars):
             self.cars.append(Car())
+            self.cars[-1].initialise_ride_queue( self.ride_queue)
 
     def save_answer(self, out_file):
         """
         Read the final
         """
+        print ""
+        print "Solution found"
         with open(out_file,'w') as f:
             for car_id in self.ride_queue.ride_map:
-                line = str(car_id)
-                for ride_id in self.ride_queue.ride_map[car_id]
+                line = str(len(self.ride_queue.ride_map[car_id]))
+                for ride_id in self.ride_queue.ride_map[car_id]:
                     line += " " + str(ride_id)
-                f.write(line)
+                f.write(line + "\n")
+                print line
 
