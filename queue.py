@@ -1,5 +1,5 @@
 from copy import deepcopy
-# queue class file
+from car import Car
 
 class RideQueue(object):
     """
@@ -11,19 +11,26 @@ class RideQueue(object):
         self.ride_queue = ride_list
         self.ride_map = {}
 
-    def give_ride(x, y, car_id):
+    def distance(self,ride, x,y):
+        return abs(x - ride.start_pos[0]) + abs(y - ride.start_pos[1])
+
+    def give_ride(sekf, x, y, car_id):
         """
         Give a car located at x,y the closest ride to it
+
+        IMPROVEMENTS:
+            1. Only get rides it is possible do
+            2.
         """
 
         # Start with the first ride in the queue as a trial solution.
-        best_distance = abs(x - ride_queue[0].start_pos[0]) + abs(y - ride_queue[0].start_pos[1])
+        best_distance = distance(self.ride_queue[0])
         current_ride = 0
 
         #
         for i in xrange(len(ride_queue)):
             # for each ride evaluate the distance between the car and the ride
-            distance_to_car = abs(x - ride_queue[i].start_pos[0]) + abs(y - ride_queue[i].start_pos[1])
+            distance_to_car = self.distance(self.ride_queue[i])
             if distance_to_car < best_distance:
                 best_distance = distance_to_car
                 current_ride = i
