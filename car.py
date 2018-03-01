@@ -12,7 +12,7 @@ class Car(object):
         self.riding = False
         self.time_remaining = 0
         self.finish = False
-        self.is_moving = True
+        self.is_moving = False
         self.id = Car.counter
         Car.counter += 1
 
