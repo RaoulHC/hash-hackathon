@@ -1,14 +1,19 @@
 from simulation_manager import SimulationManager
 
-input_man = SimulationManager('in/a_example.in')
+in_file = 'in/a_example.in'
+simulation = SimulationManager(in_file)
 
-for ride in input_man.rides:
-    print "RIDE FROM ", ride.start_pos, " TO ", ride.end_pos
+for ride in simulation.rides:
+    print "RIDE ", ride.id, ": ", ride.start_pos, " TO ", ride.end_pos
 
 
 # Run the simulation
-for t in xrange(input_man.T):
-    for car in input_man.cars:
+for t in xrange(simulation.T):
+    for car in simulation.cars:
         car.step()
 
+    # Have we finished ?
+    if simulation.ride_queue.ride_empty():
+        break
 
+simulation.save_answer(in_file.replace('in', 'out'))

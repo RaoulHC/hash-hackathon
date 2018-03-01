@@ -31,14 +31,29 @@ class SimulationManager:
             earlist_end = nums[5]
 
             self.rides.append(
-                Ride( [start_x,start_y],
-                     [end_x,end_y],
-                    earlist_start,
-                    earlist_end,
-                    r_id
-                    )
+                Ride([start_x, start_y],
+                     [end_x, end_y],
+                     earlist_start,
+                     earlist_end,
+                     r_id
+                     )
                 )
 
+        # Create the queue
+        self.ride_queue = RideQueue(self.rides)
+        #
         self.cars = []
         for i in xrange(self.n_cars):
             self.cars.append(Car())
+
+    def save_answer(self, out_file):
+        """
+        Read the final
+        """
+        with open(out_file,'w') as f:
+            for car_id in self.ride_queue.ride_map:
+                line = str(car_id)
+                for ride_id in self.ride_queue.ride_map[car_id]
+                    line += " " + str(ride_id)
+                f.write(line)
+

@@ -1,13 +1,14 @@
 from copy import deepcopy
 # queue class file
 
-class queue(object):
+class RideQueue(object):
 
-    def __init__(self, ride_list, car_list):
+    def __init__(self, ride_list):
         self.ride_queue = ride_list
         self.ride_map = {}
 
-    def give_ride(x, y, id):
+    def give_ride(x, y, car_id):
+        # Iterate over
         current_ride = 0
         res = abs(x - ride_queue[0].start_pos[0]) + abs(y - ride_queue[0].start_pos[1])
         for i in xrange(len(ride_queue)):
@@ -15,6 +16,13 @@ class queue(object):
             if dist < res:
                 res = dist
                 current_ride = i
+
+        # Store the assigned ride's id to the final list
+        if car_id in self.ride_map:
+            self.ride_map[car_id].append(ride_queue[current_ride].id)
+        else:
+            self.ride_map[car_id] = []
+            self.ride_map[car_id].append(ride_queue[current_ride].id)
 
         # copy the ride for return
         return_ride =  deepcopy(ride_queue[current_ride])
