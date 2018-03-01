@@ -16,7 +16,10 @@ class RideQueue(object):
         manhat_dist = abs(x - ride.start_pos[0]) + abs(y - ride.start_pos[1])
         # the time a car will wait can be added to the distance between a car
         # and a ride as it can be thought of as an effective additional distance
-        wait_distance = min(0,ride.earliest_step - Car.time - manhat_dist )
+        wait_distance = max(0,ride.earliest_step - Car.time - manhat_dist)
+        if ride.earliest_step - Car.time - manhat_dist <= 0:
+            wait_distance -= self.bonus
+
         return manhat_dist + wait_distance
 
     def give_ride(self, x, y, car_id):
