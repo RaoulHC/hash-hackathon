@@ -2,7 +2,7 @@
 
 
 class Car(object):
-    ride_queue = []
+    ride_queue = None
     counter = 1
 
     def __init__(self):
@@ -34,7 +34,7 @@ class Car(object):
         if Car.ride_queue.is_empty():
             self.finished = True
             return
-        self.ride = Car.ride_queue.find_queue
+        self.ride = Car.ride_queue.give_ride(self.pos[0], self.pos[1], self.id)
         if self.ride is None:
             self.is_moving = False
 
