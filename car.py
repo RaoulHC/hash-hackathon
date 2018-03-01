@@ -34,8 +34,9 @@ class Car(object):
             return
 
         self.ride = Car.ride_queue.give_ride(self.pos[0], self.pos[1], self.id)
-        self.time_remaining = self.ride.distance2start(self.pos)
-        if self.ride is None:
+        if self.ride is not None:
+            self.time_remaining = self.ride.distance2start(self.pos)
+        else:
             self.is_moving = False
 
         # check if ride
