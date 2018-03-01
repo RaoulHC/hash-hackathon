@@ -8,7 +8,3 @@ class Ride:
 
     def distance(self):
         return abs(self.end_pos[0] - self.start_pos[0]) + abs(self.end_pos[1] - self.start_pos[1])
-    def get_start_pos(self):
-    	return self.start_pos
-    def get_end_pos(self):
-    	return self.end_pos
