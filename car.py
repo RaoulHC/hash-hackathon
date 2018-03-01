@@ -7,6 +7,7 @@ class Car(object):
     def __init__(self):
         self.ride = None
         self.finish = False
+        self.is_moving = True
 
     @staticmethod
     def initialise_ride_queue(cls, queue):
