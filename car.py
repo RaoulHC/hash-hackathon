@@ -9,10 +9,14 @@ class Car(object):
         self.finish = False
         self.is_moving = True
 
-    @staticmethod
+    @classmethod
     def initialise_ride_queue(cls, queue):
-        ride_queue = queue
+        cls.ride_queue = queue
+
+    def get_ride_queue(self):
+        return Car.ride_queue
 
     def step(self):
-        if ride_queue == []:
+        if Car.ride_queue == []:
             self.finish = True
+            return
