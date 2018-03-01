@@ -26,13 +26,3 @@ class queue(object):
     def ride_empty():
         if not ride_queue:
             return false
-
-
-# is ride empty
-
-#     def output
-
-
-#     def step(self):
-#         if ride_queue == []:
-#             self.finish = True
