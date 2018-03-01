@@ -2,6 +2,8 @@ from simulation_manager import SimulationManager
 from car import Car
 
 in_file = 'in/a_example.in'
+# in_file = 'in/b_should_be_easy.in'
+
 simulation = SimulationManager(in_file)
 
 for ride in simulation.rides:
@@ -16,6 +18,7 @@ for t in xrange(simulation.T):
 
     # Have we finished ?
     if simulation.ride_queue.ride_empty():
+        print "THE RIDE QUEUE IS EMPTY: QUITTING!"
         break
 
 simulation.save_answer(in_file.replace('in', 'out'))

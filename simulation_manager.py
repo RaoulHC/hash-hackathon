@@ -42,6 +42,7 @@ class SimulationManager:
 
         # Create the queue
         self.ride_queue = RideQueue(self.rides)
+
         #
         self.cars = []
         for i in xrange(self.n_cars):
