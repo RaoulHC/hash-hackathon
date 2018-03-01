@@ -23,6 +23,10 @@ class queue(object):
         del ride_queue[current_ride]
         return return_ride
 
+    def ride_empty():
+        if not ride_queue:
+            return false
+
 
 # is ride empty
 
