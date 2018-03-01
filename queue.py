@@ -49,6 +49,6 @@ class RideQueue(object):
         del ride_queue[current_ride]
         return return_ride
 
-    def ride_empty():
-        if not ride_queue:
-            return false
+    def ride_empty(self):
+        if not self.ride_queue:
+            return False
