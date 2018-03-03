@@ -3,10 +3,10 @@ from car import Car
 
 in_files = [
     'in/a_example.in',
-    'in/b_should_be_easy.in',
-    'in/c_no_hurry.in',
-    'in/d_metropolis.in',
-    'in/e_high_bonus.in'
+    # 'in/b_should_be_easy.in',
+    # 'in/c_no_hurry.in',
+    # 'in/d_metropolis.in',
+    # 'in/e_high_bonus.in'
 ]
 
 for in_file in in_files:
