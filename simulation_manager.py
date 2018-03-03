@@ -63,3 +63,32 @@ class SimulationManager:
                 f.write(line + "\n")
                 print line
 
+    def evaluate_score(self):
+        score = 0
+        for car_id in self.ride_queue.ride_map:
+            x,y,t = 0,0,0
+            for ride_id in self.ride_queue.ride_map[car_id]:
+                ride_score = 0
+
+                # work out the time the car will arrive at the place
+                d = self.ride_queue.original_ride_list[ride_id].distance2start([x,y])
+                t += d
+                if t <= self.ride_queue.original_ride_list[ride_id].earliest_step:
+                    ride_score += self.bonus
+                    t = self.ride_queue.original_ride_list[ride_id].earliest_step
+
+                # complete the jounrey
+                t += self.ride_queue.original_ride_list[ride_id].length()
+                x,y = self.ride_queue.original_ride_list[ride_id].end_pos[0],self.ride_queue.original_ride_list[ride_id].end_pos[1]
+
+                # Award points for the length of the journey if we completed it on time
+                if t <= self.ride_queue.original_ride_list[ride_id].latest_step:
+                    ride_score += self.ride_queue.original_ride_list[ride_id].length()
+                else:
+                    ride_score = 0
+                # add it to total
+                score += ride_score
+
+        print "SCORE: ", score
+        return score
+
