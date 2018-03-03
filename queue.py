@@ -9,6 +9,8 @@ class RideQueue(object):
         """
         """
         self.ride_queue = ride_list
+        self.original_ride_list = deepcopy(ride_list)
+
         self.ride_map = {}
         self.bonus = bonus
 
@@ -32,9 +34,9 @@ class RideQueue(object):
         """
 
         # Delete expired rides
-        for x in sorted(xrange(len(self.ride_queue)), reverse=True):
-            if self.ride_queue[x].latest_step < Car.time:
-                del self.ride_queue[x]
+        # for x in sorted(xrange(len(self.ride_queue)), reverse=True):
+        #     if self.ride_queue[x].latest_step < Car.time:
+        #         del self.ride_queue[x]
 
         # Start with the first ride in the queue as a trial solution.
         best_distance = self.distance(self.ride_queue[0],x,y)

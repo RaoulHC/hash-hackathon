@@ -9,3 +9,6 @@ class Ride:
 
     def distance2start(self, x):
     	return abs(self.start_pos[0] - x[0]) + abs(self.start_pos[1] - x[1])
+
+    def length(self):
+        return abs(self.start_pos[0] - self.end_pos[0]) + abs(self.start_pos[1] - self.end_pos[1])
