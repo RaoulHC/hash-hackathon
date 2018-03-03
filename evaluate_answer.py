@@ -3,12 +3,13 @@ from car import Car
 
 in_files = [
     'in/a_example.in',
-    'in/b_should_be_easy.in',
+    # 'in/b_should_be_easy.in',
     # 'in/c_no_hurry.in',
-    # 'in/d_metropolis.in',
-    # 'in/e_high_bonus.in'
+    'in/d_metropolis.in',
+    'in/e_high_bonus.in'
 ]
 
+total_score = 0
 for in_file in in_files:
     simulation = SimulationManager(in_file)
 
@@ -25,4 +26,6 @@ for in_file in in_files:
             break
 
     simulation.save_answer(in_file.replace('in', 'out'))
-    simulation.evaluate_score()
+    total_score += simulation.evaluate_score()
+    print ""
+print "Total score: ",total_score

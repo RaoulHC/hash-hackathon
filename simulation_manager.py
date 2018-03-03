@@ -90,5 +90,6 @@ class SimulationManager:
                 score += ride_score
 
         print "SCORE: ", score
+        print "Missed Rides: ", self.ride_queue.missed_rides
         return score
 
